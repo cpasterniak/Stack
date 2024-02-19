@@ -40,7 +40,7 @@ public class Stack<T> {
      */
     public T peek() {
         int val = count - 1;
-        if(stack.length != 1 && stack.length != 0) {
+        if(stack.length != 1 && stack.length != 0 && val >= 0) {
             return stack[val];
         }
         return null;
@@ -50,10 +50,12 @@ public class Stack<T> {
      * deletes the object with the highest Index
      * throws Exception if there aren't any objects in the Array
      */
-    public void pop() {
+    public T pop() {
         count--;
         if(count == -1) throw new StackEmptyException("der Stack ist empty");
+        T lastElement = stack[count];
         stack[count] = null;
+        return lastElement;
     }
 
     /**
